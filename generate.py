@@ -1,22 +1,37 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Nov 14 22:29:27 2018
-
-@author: ilana
+NaNoGenMo: A Little Robot's Guide to Witchcraft
 """
 import random
 
+ingred_input = open("ingredients.txt","r")
+
 i = 0 # ye olde index variable
-
 ingredient_printout = ''
-anger = ["rusty nails","war water","hot sauce","pepper","lemon", "cayenne pepper", "dragon's blood", "black salt", "onyx"]
+title_printout = ' '
 
-num_Ingred = random.randint(2,8) # randomly generates how many ingredients to choose
-ingredients = random.sample(range(0,len(anger)),num_Ingred) #array of random ingredients without repeating
+""" --------------- TITLE CHOICES --------- """
+titleA = ['Spell','Potion','Elixer','Poultice','Hex','Curse']
+titleB = ['Love','Sleep','Fertility','Health','Wisdom']
+titlechoice = random.randint(0,1)
+if titlechoice == 0:
+    title_printout = random.choice(titleA) + ' of ' + random.choice(titleB) + '\n'
+else:
+    title_printout = random.choice(titleA) + ' for ' + random.choice(titleB) + '\n'
+
+
+""" --------------- INGREDIENT CHOICES --------- """
+all_ingredients = ingred_input.readlines()
+# possible_ingredients = ingred_input.read().splitlines()
+
+num_Ingred = random.randint(3,8) # randomly generates how many ingredients to choose
+ingredients = random.sample(range(0,len(all_ingredients)),num_Ingred) #array of random ingredients without repeating
 
 for i in range (0,num_Ingred):
-    #print(anger[ingredients[i]])
-    ingredient_printout += anger[ingredients[i]] + '\n'
+    ingredient_printout += all_ingredients[ingredients[i]]    
     
-    
-print(ingredient_printout)
+
+""" --------------- OUTPUT --------- """
+print("A LITTLE ROBOT'S GUIDE TO WITCHCRAFT \n             ------------ \n")
+print(title_printout + '\n' + ingredient_printout) # print ingredients list
+
+ingred_input.close()

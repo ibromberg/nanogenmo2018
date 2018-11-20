@@ -9,9 +9,8 @@ all_ingredients = ingred_input.readlines()
 titleB = ['Infatuation','Sleep','Fertility','Health','Wisdom','Peace','Healing','Transformation','Luck','Hair Growth','Safety']
 
 i = 0 # ye olde index variable
-j=0
+j = 0
 ingredients_list = []
-
 
 def generate_positive():
     positive_ttl = ['Poultice','Balm','Charm','Glamour','Enchantment']
@@ -44,7 +43,8 @@ def generate_negative():
         return random.choice(negative_ttl) + ' for ' + random.choice(p2)
 
 def generate():
-    ingredient_printout = ''
+    ingredient_print = ''
+    
     """ --------------- intent generation --------- """
     
     # determine if positive, neutral, or negative spell
@@ -59,26 +59,27 @@ def generate():
     """ --------------- INGREDIENT CHOICES --------- """
     
     
-    num_components = random.randint(4,7) # randomly generates how many ingredients to choose    
-    ingredients = random.sample(range(0,len(all_ingredients)),num_components) # picks out num_comp amount of integers within 0 to the length of the ingredients list
+  #  num_components = random.randint(4,7) # randomly generates how many ingredients to choose    
+    num_components = 4
+    which_ingred_index = random.sample( range(0,len(all_ingredients)), num_components ) # picks out num_comp amount of integers within 0 to the length of the ingredients list
     
-    for i in range (0,num_components):
-        ingredient_printout += all_ingredients[ingredients[i]]
-        
-        ingredients_list.append(all_ingredients[ingredients[i]])
+    for i in range (0,num_components):               
+        ingredients_list.append( all_ingredients[which_ingred_index[i]].rstrip() ) #appends 
+        ingredient_print += ( (ingredients_list[i]) + "\n" ) # string to print out
         
     """ GENERATE INSTRUCTIONS """
     
-    potential = ['grind together','mix together','stir together']
-    potential2 = ['under the light of a full moon', 'under the light of a new moon','in a cauldron']
-    potential3 = ['with a steady hand','while praying to a deity of your choice']
-    
-    num_components=4
-    which_instructions = random.randint(0,1)
+    potential0 = ['grind up','burn','drown','burn a candle over']
+    potential1 = ['grind together','mix together','stir','combine together']
+    potential2 = ['under the light of a full moon', 'during a new moon','in a cauldron']
+    potential3 = ['with a steady hand','while praying to a deity of your choice','while keeping a clear mind','while envisioning the desired result']
+   
+
     if num_components == 4:
         instructions = ("First, take the " + ingredients_list[0] + " and the " + ingredients_list[1]
-        + " and " + random.choice(potential) + ". Next, add the " + ingredients_list[2] + ' ' + random.choice(potential2)
-        + " and add " + ingredients_list[3] )
+        + " and " + random.choice(potential1) + ". Next, add the " + ingredients_list[2] + ' ' + random.choice(potential2)
+        + " and " + random.choice(potential1) + ". Finally, " + random.choice(potential0) + " the " + ingredients_list[3] + " and " + random.choice(potential1)
+        + " " + random.choice(potential3) + ".")
     elif num_components == 5:
         instructions = "lol"
     elif num_components == 6:
@@ -86,7 +87,7 @@ def generate():
     else:
         instructions = "weener"
     
-    return titleA + '\n\n' + ingredient_printout + '\n\n' + instructions
+    return titleA + '\n\n' + ingredient_print + '\n\n' + instructions
     
 
 """ --------------- OUTPUT --------- """

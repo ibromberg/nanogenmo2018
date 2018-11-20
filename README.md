@@ -3,7 +3,9 @@ I really wanted to participate in NaNoGenMo this year!!! I don't know if I'll ac
 
 
 TODO
-- have 3 different inputs for ingredients that are positive, negative, neutral
-  --> takes a random number of neutral and positive/negative ingredients for eac
-- create the instructional output! use all the ingredients
-    first, take item[0] and item[1] and option[0]. then, add item[2]. while option[1], ...etc
+
+- do output into a text file
+
+- finish all the possible output templates
+
+- add random "result" line to the end of each template; 'feed to target','sleep with results under pillow', etc.

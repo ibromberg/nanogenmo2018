@@ -27,7 +27,7 @@ bottlebrush
 buttercup
 camellias
 carnation
-chrysantemum
+chrysanthemum
 columbine
 clover
 crocus
